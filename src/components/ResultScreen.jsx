@@ -77,13 +77,25 @@ export default function ResultScreen({ result, onBack }) {
             <p className="text-xs text-slate-400 uppercase tracking-wider mb-3 font-semibold">Ringkasan Jawaban</p>
             {result.answers.map((ans, i) => {
               const q = result.questions[i]
+              const wrongAnswerText = !ans.correct ? q.options[ans.selected].text : null;
+
               return (
                 <div key={i} className={`flex items-center gap-3 py-2 ${i > 0 ? 'border-t border-slate-800/50' : ''}`}>
                   <span className={`text-lg ${ans.correct ? 'text-emerald-400' : 'text-red-400'}`}>
                     {ans.correct ? '✓' : '✗'}
                   </span>
                   <span className="text-xl" style={{ fontFamily: 'var(--font-jp)' }}>{q.kanji.kanji}</span>
-                  <span className="text-xs text-slate-400 flex-1">{q.kanji.meaning}</span>
+                  <div className="flex-1 flex items-center gap-2 flex-wrap">
+                    {!ans.correct && (
+                      <>
+                        <span className="text-xs text-red-400/80 line-through decoration-red-500/50">{wrongAnswerText}</span>
+                        <span className="text-xs text-slate-500">→</span>
+                      </>
+                    )}
+                    <span className={`text-xs ${ans.correct ? 'text-slate-400' : 'text-emerald-400'}`}>
+                      {q.kanji.meaning}
+                    </span>
+                  </div>
                 </div>
               )
             })}

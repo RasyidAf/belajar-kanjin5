@@ -44,25 +44,25 @@ export default function KanjiTable({ onBack }) {
           <table className="w-full">
             <thead>
               <tr className="border-b border-slate-700/50">
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">#</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Kanji</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Cara Baca</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Arti</th>
+                <th className="px-2 sm:px-4 py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">#</th>
+                <th className="px-2 sm:px-4 py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Kanji</th>
+                <th className="px-2 sm:px-4 py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Cara Baca</th>
+                <th className="px-2 sm:px-4 py-3 text-left text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider min-w-[120px]">Arti</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((kanji, index) => (
                 <tr key={kanji.id} className="border-b border-slate-800/50 hover:bg-slate-800/40 transition-colors group">
-                  <td className="px-4 py-3 text-xs text-slate-600">{index + 1}</td>
-                  <td className="px-4 py-4">
-                    <span className="text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors" style={{ fontFamily: 'var(--font-jp)' }}>
+                  <td className="px-2 sm:px-4 py-3 text-[10px] sm:text-xs text-slate-600">{index + 1}</td>
+                  <td className="px-2 sm:px-4 py-3 sm:py-4 whitespace-nowrap">
+                    <span className="text-2xl sm:text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors" style={{ fontFamily: 'var(--font-jp)' }}>
                       {kanji.kanji}
                     </span>
                   </td>
-                  <td className="px-4 py-3">
-                    <span className="text-sm text-sakura-300" style={{ fontFamily: 'var(--font-jp)' }}>{kanji.reading}</span>
+                  <td className="px-2 sm:px-4 py-3 whitespace-nowrap">
+                    <span className="text-xs sm:text-sm text-sakura-300" style={{ fontFamily: 'var(--font-jp)' }}>{kanji.reading}</span>
                   </td>
-                  <td className="px-4 py-3 text-sm text-slate-300">{kanji.meaning}</td>
+                  <td className="px-2 sm:px-4 py-3 text-xs sm:text-sm text-slate-300">{kanji.meaning}</td>
                 </tr>
               ))}
             </tbody>
